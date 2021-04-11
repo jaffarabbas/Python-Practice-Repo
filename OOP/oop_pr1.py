@@ -5,8 +5,8 @@ class Student:
        self.age = age
        self.grade = grade
 
-    def getAverageGrade(self):
-        return self.grade
+    def getAverageGrade():
+        return int(self.grade)
     
     #methods instanceself.
 
@@ -24,34 +24,38 @@ class Course:
                 return True
             return False
 
-    def getAverageGrade(self):
+    def getGrade(self):
         value = 0
-        for student in self.Students:
+        for student in Student:
             value += student.getAverageGrade()
 
         return value / len(self.Students)
 
 class Test:
      def tester(self):
-        i = 0
+        i = 1
         num = []
         number_of_students = int(input('Number of students : '))
         while(True):
             if(i<=number_of_students):
                 name = input('Student Name : ')
                 age = int(input('age : '))
-                grade = input('Grade : ')
+                grade = int(input('Grade : '))
                 num.append(Student(name, age, grade))
                 i+=1
             else:
                 break
 
-        print('do you want to enroll those students in courses y or n')
+        # print('do you want to enroll those students in courses y or n')
         course = Course('DSA',number_of_students) 
         print('Couse : DSA','\n Number of students : ',number_of_students)
         
-        for i in range(number_of_students):
-            print(course.add_Students(number_of_students))
+        for i in range(0,number_of_students):
+            if(course.add_Students(number_of_students)):
+                print('Student : ',number_of_students,'\nStudent name : ',num[i].name,'\nStudent Age : ',num[i].age,'\nStudent Grade : ',num[i].grade,'\n\n')
+        
+        #getAverageGrade
+        print("Average Grade : ",course.getGrade())
 def main():
     test = Test()
     test.tester()
