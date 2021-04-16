@@ -1,0 +1,98 @@
+body {background: #eee8cd url(images/bg.png);font: 16px/1.4em arial, helvetica, sans-serif;color: #333;margin:10px 0 10px 0;padding:0;}
+
+#maincontainer {width: 935px;margin: 0 auto;border: 10px solid #fff;background: #fff url(images/bg_main.gif) repeat-y;}
+
+#header-{background: #c76114;border-bottom: 8px solid #333;height: 90px;}
+
+#contentwrapper {float: left;width: 100%;}
+
+#contentcolumn {margin: 0 190px 0 180px;}
+
+#leftcolumn {float: left;width: 180px;margin-left: -935px;}
+
+#leftcolumnText {font-size: 0.75em;margin: 10px;}
+
+#rightcolumn {float: left;width: 190px;margin-left: -190px;}
+
+#rightcolumnText{font-size: 0.75em;margin: 0 10px;}
+
+#contentcolumn,#leftcolumn,#rightcolumn {margin-bottom: 10px;} 
+
+#footer {background-color: #fff;clear: left;font-size: 0.75em;width: 935px;text-align: center;}
+
+#copyright {border-top: 2px solid #333;padding-top: 5px;}
+
+/*---------- Navigation left----------*/
+
+#navleft {padding-left: 10px;margin: 0 10px 0 0;}
+
+#navleft li {list-style: none;letter-spacing: 1px;margin: 0;padding: 0 0 0.25em 0;text-transform: uppercase;}
+
+#navleft li a,#navleft li a:link,#navleft li a:active,#navleft li a:visited {display: block;background: url(images/navleft_line.gif) no-repeat 0% 18px;color: #333;font-size: 0.81em;font-weight: bold;outline:none;text-decoration: none;}
+
+*html #navleft li a {width: 100%;}
+
+#navleft li a:hover {color: #c76114;}
+
+/*---------- Navigation top ----------*/
+
+#navmain {margin-bottom: 1em;overflow: hidden;border-bottom: 1px solid #ccc;width: 562px;margin: 0 3px 0 0;}
+
+#navlist {list-style-type: none;margin: 0;padding: 0;}
+
+#navlist li {background: url(images/navtop_arrow.gif) no-repeat 0% 7px;letter-spacing: 1px;font-size: 0.75em;float: left;line-height: 1.1em;margin: 0 0 0 10px;_margin: 0 0 0 5px;padding: 0.5em 0.5em 0.5em 10px;}
+
+#navlist li a,#navlist li a:link,#navlist li:active,#navlist li a:visited {color: #333;text-decoration: none;}
+
+#navlist li a:hover {color: #c76114;text-decoration: underline;}
+
+/*---------- Styles ----------*/
+
+#header-h1 {font-weight: normal;margin: 0;color: #fff;padding: 50px 0 0 25px;background: url(images/header_h1_line.gif) no-repeat 0% 75px;height: 38px;letter-spacing: 5px;}
+
+#leftcolumn h1 {background-color: #333;color: #eec900;margin: 10px 10px 5px 10px;text-align: center;font-size: 0.81em;text-transform: uppercase;}
+
+#rightcolumn h1 {font-size: 1.12em;border-bottom: 1px solid #333;margin: 5px 0 5px 0;}
+
+#rightcolumn a,#rightcolumn a:link,#rightcolumn a:active,#rightcolumn a:visited,#leftcolumn a,#leftcolumn a:link,#leftcolumn a:active,#leftcolumn a:visited,#contentcolumn a,#contentcolumn a:link,#contentcolumn a:active,#contentcolumn a:visited {color: #c76114;}
+
+#rightcolumn a:hover,#leftcolumn a:hover,#contentcolumn a:hover {color: #dda072;}
+
+#leftcolumn h2 {color: #c76114;font-size: 1.06em;margin-bottom: 0;}
+
+#leftcolumn a,#leftcolumn a:link,#leftcolumn a:active,#leftcolumn a:visited {color: #7d9ec0;}
+
+#leftcolumn a:hover {color: #b1c5d9;}
+
+.maintext {font-size: 0.81em;margin: 10px;}
+
+h1,h2,h3,h4,h5,h6 {letter-spacing: 1px;}
+
+#contentcolumn h1 {background: white url(images/bg_main_h1.gif) no-repeat;font-size: 1.75em;height: 60px;margin: 10px 10px 0 10px;padding: 13px 0 0 17px;font-style: italic;}
+
+#contentcolumn h2 {border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;font-size: 0.88em;margin: 0;font-weight: normal;padding: 5px 0 5px 10px;}
+
+#contentcolumn h3 {font-size: 1.13em;}
+
+#contentcolumn h4,#contentcolumn h5,#contentcolumn h6 {font-size: 1em;}
+
+a,a:link,a:active,a:visited {color: #333;font-weight: bold;outline:none;text-decoration: underline;}
+
+a:hover {color: #c76114;text-decoration: none;}
+
+.infobox {font-size: 0.94em;background-color: #f4f4f4;border: 1px solid #ccc;margin: 20px 0 20px 0;padding: 5px 10px 5px 10px;}
+
+div.hr {height: 14px; background: #fff url(images/hr.gif) no-repeat scroll center;}
+
+div.hr hr{display: none;}
+
+blockquote {font-size: 1.38em;line-height: 1.6em;font-weight: bold;letter-spacing: 1px;margin: 20px 10% 20px 10%;text-align: center;}
+
+.list {margin-left: 15px;padding-left: 0;list-style: none;}
+
+.list li {padding-left: 15px;background: url(images/list.gif) no-repeat 0 6px;}
+
+.imageLeft {border: 1px solid #ccc; padding: 5px;float: left;margin: 6px 10px 0 0;}
+
+.imageRight {border: 1px solid #ccc; padding: 5px;float: right;margin: 6px 0 0 10px;}
+
