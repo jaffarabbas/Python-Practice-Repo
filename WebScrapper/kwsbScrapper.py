@@ -8,10 +8,10 @@ filename = req.url[(downloadUrl.rfind('/')+1):]
 
 print(filename)
 
-# with open(filename,'wb') as f:
-#     for chunk in req.iter_content(chunk_size=34552):
-#         if chunk:
-#             f.write(chunk)
+with open(filename,'wb') as f:
+    for chunk in req.iter_content(chunk_size=34552):
+        if chunk:
+            f.write(chunk)
 
 # filename = req.url[(downloadUrl.rfind('/')+1):]
 
