@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-downloadUrl = "http://www.kwsb.gos.pk/OnlineBillingView.aspx?C0130571000"
+downloadUrl = "https://softeng.polito.it/tongji/SE/ex/The-POS-system.pdf"
 req = requests.get(downloadUrl)
 print(req.headers)
 
