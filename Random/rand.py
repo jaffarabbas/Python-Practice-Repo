@@ -38,8 +38,8 @@ class game:
 
 def main():
     ob = game()
-    # ran =  ob.genrateNumber(0,10)
-    # print(ran)
+    ran =  ob.genrateNumber(0,10)
+    print(ran)
     ob.Guesser()
 
 
