@@ -1,0 +1,48 @@
+{% extends 'Master.html' %}
+
+{% block body %}
+<h4 class="text-center pb-5 pt-5">Contact Messages</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>message</th>
+            <th>date</th>
+{#            <th></th>#}
+{#            <th></th>#}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in object %}
+        <tr>
+            <td>
+                {{ i.name }}
+            </td>
+            <td>
+                {{ i.email }}
+            </td>
+            <td>
+                {{ i.phone }}
+            </td>
+            <td>
+                {{ i.message }}
+            </td>
+            <td>
+                {{ i.date }}
+            </td>
+{#            <td>#}
+{#                <form method="post" action="{% url 'deletedata' i.name %}" class="d-inline">#}
+{#                    <input type="submit" class="btn btn-danger" value="Delete">#}
+{#                </form>#}
+{#            </td>#}
+            <td>
+                {{ i.date }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -35,3 +35,13 @@ def contact(request):
         'flag': flag
     }
     return render(request, "Contact.html", context)
+
+
+#delete contact
+
+# def delete_contact(request , id):
+#     if request.method == 'POST':
+#         pi = Contact.objects.get(id=id)
+#         pi.delete()
+#
+#     return HttpResponseRedirect('/')

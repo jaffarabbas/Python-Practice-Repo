@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# from dataApp import views
 
 admin.site.site_header = 'darklord'
 admin.site.site_title = 'darklord universe'
@@ -23,4 +24,5 @@ admin.site.index_title = 'dark'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('dataApp.urls')),
+    # path('delete/<int:name>/', views.delete_contact , name="deletedata"),
 ]
