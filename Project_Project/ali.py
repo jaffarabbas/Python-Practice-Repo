@@ -12,6 +12,7 @@ if __name__ == '__main__':
     symbols = string.punctuation
 
     all = lower + upper + num + symbols
+    print(all)
 
     temp = random.sample(all, length)
 
