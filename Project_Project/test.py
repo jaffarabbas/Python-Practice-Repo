@@ -16,16 +16,16 @@ class GeneratePassword:
     userInputManipulatedString = ''
 
     def Generate(self):
-        SpecialCharacters = ['!', '@', '#', '&', '%', '^', '*', '$', '_', '~']
+        SpecialCharacters = "@$-&.%!_#"
         user = input('enter user value: ')
         passValue = random.sample(user, len(user))
         for i in passValue:
             self.userInputManipulatedString += i
-        randomString = ''.join(random.choice(string.ascii_lowercase) for i in range(4))
-        randomLowerString = ''.join(random.choice(string.ascii_uppercase) for i in range(4))
-        randomUpperString = ''.join(random.choice(string.digits) for i in range(4))
-        randomSpecialString = ''.join(random.choice(SpecialCharacters) for i in range(4))
-        tempPassword = randomLowerString + randomUpperString + randomSpecialString + randomString + self.userInputManipulatedString
+        randomLowerString = ''.join(random.choice(string.ascii_lowercase) for i in range(3))
+        randomUpperString = ''.join(random.choice(string.ascii_uppercase) for i in range(3))
+        randomDigit = ''.join(random.choice(string.digits) for i in range(3))
+        randomSpecialString = ''.join(random.choice(SpecialCharacters) for i in range(3))
+        tempPassword = randomLowerString + randomUpperString + randomSpecialString + randomDigit + self.userInputManipulatedString
         self.password = ''.join(random.choice(tempPassword) for i in range(len(tempPassword)))
         return self.password
 
