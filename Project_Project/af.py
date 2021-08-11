@@ -13,9 +13,10 @@ if __name__ == '__main__':
     number = string.digits
     symbol = string.punctuation
 
-    all = lower + upper + number + symbol
+    all = lower + upper + number + symbol + passw
 
-    password = ''.join(random.choice(all) for i in range(len(all)))
+    print(all)
+    password = ''.join(random.choice(all) for i in range(15))
 
     print(password)
     l = list(password)
