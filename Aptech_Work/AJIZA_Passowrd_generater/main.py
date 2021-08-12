@@ -1,4 +1,5 @@
 from tkinter import *
+
 from splashScreen import SplashScreen
 
 if __name__ == '__main__':
