@@ -1,4 +1,5 @@
 from tkinter import *
+from dashboard import Dashboard
 
 
 class SplashScreen:
@@ -10,10 +11,11 @@ class SplashScreen:
     x_cord = (screen_width / 2) - (app_width / 2)
     y_cord = (screen_height / 2) - (app_height / 2)
     splashImage = PhotoImage(file="images/splash.png")
+    dashboard = Dashboard()
 
     def __init__(self):
         self.load_main_window()
-        self.splash_root.after(5000, self.main_window)
+        self.splash_root.after(100, self.main_window)
 
     def load_main_window(self):
         self.splash_root.geometry(f'{self.app_width}x{self.app_height}+{int(self.x_cord)}+{int(self.y_cord)}')
@@ -24,7 +26,4 @@ class SplashScreen:
 
     def main_window(self):
         self.splash_root.destroy()
-
-        root = Tk()
-        root.title("dashboad")
-        root.geometry("3171x2098")
+        self.dashboard.main_window()
