@@ -30,6 +30,9 @@ class RandomPassword:
         screen_height = randomPasswordWindow.winfo_screenheight()
         x_cord = (screen_width / 2) - (app_width / 2)
         y_cord = (screen_height / 2) - (app_height / 2)
+        copyGeneratedPassword = PhotoImage(file="images/CopyPasswordButton.png")
+        generatePasswordButton = PhotoImage(file="images/passowrdGeneratebutton.png")
+
         RandomPasswordBackgroundImage = PhotoImage(file="images/randomPasswordBackground.png")
         background_label = Label(randomPasswordWindow, image=RandomPasswordBackgroundImage)
         background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -81,7 +84,10 @@ class RandomPassword:
         def Copy():
             CopyPassword.CopyPassword(Output.get("1.0", END))
 
-        Button(randomPasswordWindow, text='Copy', command=Copy).pack()
+        CopyGeneratedPassword = copyGeneratedPassword.subsample(3, 3)
+
+        Button(randomPasswordWindow, image=CopyGeneratedPassword, compound=LEFT, bg='white', borderwidth=0,
+                      command=Copy).place(x=830, y=209)
 
         def checkCheckBox():
             print(state())
@@ -91,7 +97,9 @@ class RandomPassword:
             Output.insert(END, self.GeneratePassword(list(state())))
             Output.configure(state='disabled')
 
-        Button(randomPasswordWindow, text='Peek', command=checkCheckBox).pack(side=RIGHT)
+        GeneratePasswordButton = generatePasswordButton.subsample(3, 3)
+        Button(randomPasswordWindow, image=GeneratePasswordButton, compound=LEFT, bg='white', borderwidth=0,
+               command=checkCheckBox).place(x=300, y=450)
 
         randomPasswordWindow.mainloop()
 
@@ -125,4 +133,6 @@ class RandomPassword:
         tempPassword = randomLowerString + randomUpperString + randomSpecialString + randomDigit
         return ''.join(random.choice(tempPassword) for i in range(len(tempPassword)))
 
-
+if __name__ == '__main__':
+    obj = RandomPassword()
+    obj.main_window()
