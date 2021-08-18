@@ -22,9 +22,9 @@ class RandomPassword:
         screen_height = randomPasswordWindow.winfo_screenheight()
         x_cord = (screen_width / 2) - (app_width / 2)
         y_cord = (screen_height / 2) - (app_height / 2)
+        RandomPasswordBackgroundImage = PhotoImage(file="images/randomPasswordBackground.png")
         copyGeneratedPassword = PhotoImage(file="images/CopyPasswordButton.png")
         generatePasswordButton = PhotoImage(file="images/passwordGenerateButton.png")
-        RandomPasswordBackgroundImage = PhotoImage(file="images/randomPasswordBackground.png")
         checkBeforeImage = PhotoImage(file="images/Checkbox.png")
         checkAfterImage = PhotoImage(file="images/checked.png")
 
@@ -76,8 +76,8 @@ class RandomPassword:
         def Copy():
             CopyPassword.CopyPassword(Output.get("1.0", END))
 
-        GenerateButton = Button(randomPasswordWindow, image=CopyGeneratedPassword, compound=LEFT, bg='white',borderwidth=0 ,command=Copy)
-        GenerateButton.place(x=830, y=209)
+        CopyButton = Button(randomPasswordWindow, image=CopyGeneratedPassword, compound=LEFT, bg='white',borderwidth=0 ,command=Copy)
+        CopyButton.place(x=830, y=209)
 
         def checkCheckBox():
             Output.configure(state="normal")
@@ -87,9 +87,8 @@ class RandomPassword:
             Output.configure(state='disabled')
             self.PasswordLength = LengthValue.get()
 
-        Button(randomPasswordWindow, image=GeneratePasswordButton, compound=LEFT, bg='white', borderwidth=0,
-               command=checkCheckBox).place(x=300, y=450)
-
+        GenerateButton = Button(randomPasswordWindow, image=GeneratePasswordButton, compound=LEFT, bg='white', borderwidth=0,command=checkCheckBox)
+        GenerateButton.place(x=300, y=450)
         randomPasswordWindow.mainloop()
 
     def GeneratePassword(self, CheckList):
