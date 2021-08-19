@@ -11,10 +11,14 @@ class Test:
         return self.tempPassword[::-1]
 
     def userInputSuffleIntoNumber(self):
-        temp = ''
-        for i in self.tempPassword:
-            temp += str(string.ascii_lowercase.index(i))
-        return temp
+        try:
+            self.tempPassword = self.UserValue()
+            temp = ''
+            for i in self.tempPassword:
+                temp += str(string.ascii_lowercase.index(i))
+            return temp
+        except ValueError:
+            return ValueError
 
     def FinalPassword(self):
         self.tempPassword = self.UserValue()
@@ -23,7 +27,7 @@ class Test:
 
 def main():
     password = Test()
-    print(password.FinalPassword())
+    print(password.userInputSuffleIntoNumber())
 
 
 if __name__ == '__main__':
