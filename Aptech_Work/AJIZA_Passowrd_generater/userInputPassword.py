@@ -97,6 +97,7 @@ class UserInputPassword:
                   , self.userInputShuffleValue(), "\n number", self.userInputShuffleIntoNumber(), "\n   reverse"
                   , self.userInputReverseValue())
             print('State: ', state())
+            print("pass:",self.GenerateDefaultPassword())
             # Display text field work
             Output.configure(state="normal")
             self.password = ''
@@ -145,28 +146,24 @@ class UserInputPassword:
         return self.password[::-1]
 
     def userInputShuffleIntoNumber(self):
-        print("hii : ", self.password)
-        value = 'jaffar'
         letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
                    'u', 'v', 'w', 'x', 'y', 'z']
         letterListOfNumber = ''
         for i in str(self.password):
             indexes = [x for x in range(len(letters)) if letters[x] == i]
-            print(indexes)
+            if not indexes:
+                break
             letterListOfNumber += str(indexes.pop())
 
-        print(letterListOfNumber)
         return letterListOfNumber
 
     # shuffle the special characters
     def specialCharacterShuffle(self, rangeValue):
-        return "".join(random.sample(self.SpecialCharacters, rangeValue))
+        return ''.join(random.sample(self.SpecialCharacters, rangeValue))
 
     # generate random password by default
     def GenerateDefaultPassword(self):
-        return "".join(self.specialCharacterShuffle(1) + "" + self.userInputShuffleValue() + ""
-                       + self.password + "" + self.specialCharacterShuffle(1) + self.userInputShuffleIntoNumber() + ""
-                       + self.specialCharacterShuffle(1))
+        return ''.join(self.specialCharacterShuffle(1) + str(self.userInputShuffleValue()) +  str(self.password) + self.specialCharacterShuffle(1) + str(self.userInputShuffleIntoNumber()) + '' + self.specialCharacterShuffle(1))
 
     # return password string
     def UserInputPasswordPlacing(self, firstValue, secondValue, thirdValue):
