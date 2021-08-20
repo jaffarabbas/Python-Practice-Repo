@@ -163,11 +163,11 @@ class UserInputPassword:
 
     # generate random password by default
     def GenerateDefaultPassword(self):
-        return ''.join(self.specialCharacterShuffle(1) + str(self.userInputShuffleValue()) +  str(self.password) + self.specialCharacterShuffle(1) + str(self.userInputShuffleIntoNumber()) + '' + self.specialCharacterShuffle(1))
+        return ''.join(str(self.specialCharacterShuffle(1) + self.userInputShuffleValue() + self.password + self.specialCharacterShuffle(1) + self.userInputShuffleIntoNumber() + self.specialCharacterShuffle(1)))
 
     # return password string
     def UserInputPasswordPlacing(self, firstValue, secondValue, thirdValue):
-        return firstValue + "" + secondValue + "" + thirdValue
+        return firstValue + '' + secondValue + '' + thirdValue
 
     # # distribute password length
     # def LengthDistribution(self, length, numberOfBreaks, index):
