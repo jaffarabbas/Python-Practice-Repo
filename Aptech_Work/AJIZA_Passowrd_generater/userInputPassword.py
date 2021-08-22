@@ -179,28 +179,6 @@ class UserInputPassword:
     def UserInputPasswordPlacing(self, firstValue, secondValue, thirdValue):
         return firstValue + '' + secondValue + '' + thirdValue
 
-    # # distribute password length
-    # def LengthDistribution(self, length, numberOfBreaks, index):
-    #     distributedList = []
-    #     if length < numberOfBreaks:
-    #         print(-1)
-    #     elif length % numberOfBreaks == 0:
-    #         for i in range(numberOfBreaks):
-    #             distributedList.append(length // numberOfBreaks)
-    #     else:
-    #         calculate = numberOfBreaks - (length % numberOfBreaks)
-    #         final = length // numberOfBreaks
-    #         for i in range(numberOfBreaks):
-    #             if i >= calculate:
-    #                 distributedList.append(final + 1)
-    #             else:
-    #                 distributedList.append(final)
-    #
-    #     distributedList.reverse()
-    #
-    #     return distributedList[index]
-    #
-
 
 #
 if __name__ == '__main__':
