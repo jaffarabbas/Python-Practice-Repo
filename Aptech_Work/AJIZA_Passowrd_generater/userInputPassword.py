@@ -45,9 +45,11 @@ class UserInputPassword:
 
         Output.place(x=122, y=219)
 
-        InputField = Text(userInputWindow, height=1, borderwidth=0,
-                          width=40,
-                          bg="white", font=("Corbel", 25))
+        PasswordValue = StringVar()
+
+        InputField = Entry(userInputWindow, borderwidth=0, textvariable=PasswordValue,
+                           width=40,
+                           bg="white", font=("Corbel", 25))
 
         InputField.place(x=122, y=323)
 
@@ -62,7 +64,7 @@ class UserInputPassword:
         CheckBox_3 = Checkbutton(userInputWindow, variable=varValueForCheckBox[2], onvalue=1, offvalue=0, height=0,
                                  width=0, bg="white",
                                  image=checkBeforeImage,
-                                 selectimage=checkAfterImage, indicatoron=False, borderwidth=0, ).place(x=585, y=470)
+                                 selectimage=checkAfterImage, indicatoron=False, borderwidth=0, ).place(x=585, y=480)
         CheckBox_4 = Checkbutton(userInputWindow, variable=varValueForCheckBox[3], onvalue=1, offvalue=0, height=0,
                                  width=0, bg="white",
                                  image=checkBeforeImage,
@@ -71,7 +73,6 @@ class UserInputPassword:
                                  width=0, bg="white",
                                  image=checkBeforeImage,
                                  selectimage=checkAfterImage, indicatoron=False, borderwidth=0, ).place(x=836, y=471)
-
         CheckBox_6 = Checkbutton(userInputWindow, variable=varValueForCheckBox[5], onvalue=1, offvalue=0, height=0,
                                  width=0, bg="white",
                                  image=checkBeforeImage,
@@ -92,19 +93,19 @@ class UserInputPassword:
 
         def checkCheckBox():
             # Generate button work
-            self.password += InputField.get("1.0", END)
-            print("main line : ", self.password, "\n field: ", InputField.get("1.0", END), "\n Shffle : "
-                  , self.userInputShuffleValue(), "\n number", self.userInputShuffleIntoNumber(), "\n   reverse"
-                  , self.userInputReverseValue())
+            self.password = ''
+            self.password = PasswordValue.get()
+            # print("main line : ", self.password, "\n field: ",PasswordValue.get(), "\n Shffle : "
+            #       , self.userInputShuffleValue(self.password), "\n number",
+            #       self.userInputShuffleIntoNumber(self.password), "\n   reverse"
+            #       , self.userInputReverseValue(self.password))
             print('State: ', state())
-            print("pass:",self.GenerateDefaultPassword())
+            # print("pass:", self.GenerateDefaultPassword())
             # Display text field work
             Output.configure(state="normal")
-            self.password = ''
             Output.delete('1.0', END)
             Output.insert(END, self.GeneratePassword(list(state())))
             Output.configure(state='disabled')
-            self.PasswordLength = LengthValue.get()
 
         GenerateButton = Button(userInputWindow, image=GeneratePasswordButton, compound=LEFT, bg='white',
                                 borderwidth=0, command=checkCheckBox)
@@ -113,24 +114,26 @@ class UserInputPassword:
         userInputWindow.mainloop()
 
     def GeneratePassword(self, CheckList):
-        print("1", CheckList)
         tempPassword = ''
         try:
             if CheckList[0] == 1:
-                tempPassword += self.UserInputPasswordPlacing(self.password, self.userInputShuffleValue(), "")
+                tempPassword = self.UserInputPasswordPlacing(self.password, self.userInputShuffleValue(self.password),
+                                                             "")
             if CheckList[1] == 1:
-                tempPassword += self.UserInputPasswordPlacing(self.userInputShuffleValue(), self.password, "")
+                tempPassword = self.UserInputPasswordPlacing("", self.password,
+                                                             self.userInputShuffleValue(self.password))
             if CheckList[2] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(),
-                                                             self.userInputShuffleIntoNumber(), self.password)
+                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
+                                                             self.userInputShuffleIntoNumber(self.password),
+                                                             self.password)
             if CheckList[3] == 1:
-                tempPassword += self.UserInputPasswordPlacing(self.userInputReverseValue(),
-                                                              self.specialCharacterShuffle(1), self.password)
+                tempPassword = self.UserInputPasswordPlacing(self.userInputReverseValue(self.password),
+                                                             self.specialCharacterShuffle(1), self.password)
             if CheckList[4] == 1:
-                tempPassword += self.UserInputPasswordPlacing(self.userInputShuffleValue(),
-                                                              self.specialCharacterShuffle(1), self.password)
+                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
+                                                             self.specialCharacterShuffle(1), self.password)
             if CheckList[5] == 1:
-                tempPassword += self.GenerateDefaultPassword()
+                tempPassword = self.GenerateDefaultPassword()
             if CheckList.count(0) == 6:
                 print("Error!")
 
@@ -139,17 +142,17 @@ class UserInputPassword:
 
         return tempPassword
 
-    def userInputShuffleValue(self):
-        return ''.join(random.choice(self.password) for i in range(len(self.password)))
+    def userInputShuffleValue(self, password):
+        return str(''.join(random.choice(password) for i in range(len(password))))
 
-    def userInputReverseValue(self):
-        return self.password[::-1]
+    def userInputReverseValue(self, password):
+        return password[::-1]
 
-    def userInputShuffleIntoNumber(self):
+    def userInputShuffleIntoNumber(self, password):
         letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
                    'u', 'v', 'w', 'x', 'y', 'z']
         letterListOfNumber = ''
-        for i in str(self.password):
+        for i in str(password):
             indexes = [x for x in range(len(letters)) if letters[x] == i]
             if not indexes:
                 break
@@ -163,7 +166,14 @@ class UserInputPassword:
 
     # generate random password by default
     def GenerateDefaultPassword(self):
-        return ''.join(str(self.specialCharacterShuffle(1) + self.userInputShuffleValue() + self.password + self.specialCharacterShuffle(1) + self.userInputShuffleIntoNumber() + self.specialCharacterShuffle(1)))
+        default = self.specialCharacterShuffle(1) + self.userInputShuffleValue(
+            self.password) + self.password + self.specialCharacterShuffle(1) + self.userInputShuffleIntoNumber(
+            self.password) + self.specialCharacterShuffle(1)
+        print("_1:", self.userInputShuffleValue(self.password))
+        print("_2:", self.userInputShuffleIntoNumber(self.password))
+        print("_3:", self.userInputReverseValue(self.password))
+        print("_4:", default)
+        return default
 
     # return password string
     def UserInputPasswordPlacing(self, firstValue, secondValue, thirdValue):
