@@ -1,7 +1,7 @@
 from tkinter import *
 import random, string
 from copyPassword import CopyPassword
-
+import dashboard
 
 class RandomPassword:
     password = ''
@@ -27,14 +27,25 @@ class RandomPassword:
         generatePasswordButton = PhotoImage(file="images/passwordGenerateButton.png")
         checkBeforeImage = PhotoImage(file="images/Checkbox.png")
         checkAfterImage = PhotoImage(file="images/checked.png")
+        backButtonImage = PhotoImage(file="images/back.png")
 
         background_label = Label(randomPasswordWindow, image=RandomPasswordBackgroundImage)
         CopyGeneratedPassword = copyGeneratedPassword.subsample(3, 3)
         GeneratePasswordButton = generatePasswordButton.subsample(3, 3)
+        BackButton = backButtonImage.subsample(3, 3)
 
         background_label.place(x=0, y=0, relwidth=1, relheight=1)
         randomPasswordWindow.resizable(0, 0)
         randomPasswordWindow.geometry(f'{app_width}x{app_height}+{int(x_cord)}+{int(y_cord)}')
+
+        def backToDashboard():
+            backObject = dashboard.Dashboard()
+            randomPasswordWindow.destroy()
+            backObject.main_window()
+
+        BackToDashboardButton = Button(randomPasswordWindow, image=BackButton, compound=LEFT, bg='white',
+                                       borderwidth=0,command=backToDashboard)
+        BackToDashboardButton.place(x=14, y=10)
 
         Output = Text(randomPasswordWindow, height=1, borderwidth=0,
                       width=40,
