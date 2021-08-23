@@ -15,7 +15,7 @@ class SplashScreen:
 
     def __init__(self):
         self.load_main_window()
-        self.splash_root.after(5000, self.main_window)
+        self.splash_root.after(1000, self.main_window)
 
     def load_main_window(self):
         self.splash_root.geometry(f'{self.app_width}x{self.app_height}+{int(self.x_cord)}+{int(self.y_cord)}')
