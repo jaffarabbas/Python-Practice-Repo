@@ -3,6 +3,7 @@ import random, string
 from copyPassword import CopyPassword
 import dashboard
 
+
 class RandomPassword:
     password = ''
     checkValue = []
@@ -44,7 +45,7 @@ class RandomPassword:
             backObject.main_window()
 
         BackToDashboardButton = Button(randomPasswordWindow, image=BackButton, compound=LEFT, bg='white',
-                                       borderwidth=0,command=backToDashboard)
+                                       borderwidth=0, command=backToDashboard)
         BackToDashboardButton.place(x=14, y=10)
 
         Output = Text(randomPasswordWindow, height=1, borderwidth=0,
@@ -87,7 +88,8 @@ class RandomPassword:
         def Copy():
             CopyPassword.CopyPassword(Output.get("1.0", END))
 
-        CopyButton = Button(randomPasswordWindow, image=CopyGeneratedPassword, compound=LEFT, bg='white',borderwidth=0 ,command=Copy)
+        CopyButton = Button(randomPasswordWindow, image=CopyGeneratedPassword, compound=LEFT, bg='white', borderwidth=0,
+                            command=Copy)
         CopyButton.place(x=830, y=209)
 
         def checkCheckBox():
@@ -98,7 +100,8 @@ class RandomPassword:
             Output.configure(state='disabled')
             self.PasswordLength = LengthValue.get()
 
-        GenerateButton = Button(randomPasswordWindow, image=GeneratePasswordButton, compound=LEFT, bg='white', borderwidth=0,command=checkCheckBox)
+        GenerateButton = Button(randomPasswordWindow, image=GeneratePasswordButton, compound=LEFT, bg='white',
+                                borderwidth=0, command=checkCheckBox)
         GenerateButton.place(x=300, y=450)
         randomPasswordWindow.mainloop()
 
@@ -157,6 +160,7 @@ class RandomPassword:
         distributedList.reverse()
 
         return distributedList[index]
+
 
 #
 if __name__ == '__main__':
