@@ -1,9 +1,8 @@
 import random
 import string
 from tkinter import *
-
 from copyPassword import CopyPassword
-
+import dashboard
 
 class UserInputPassword:
     password = ''
@@ -14,7 +13,7 @@ class UserInputPassword:
     def main_window(self):
         # variables
         userInputWindow = Tk()
-        userInputWindow.title("Random Password")
+        userInputWindow.title("User Input Password")
         app_width = 1000
         app_height = 600
         LengthValue = IntVar()
@@ -30,14 +29,25 @@ class UserInputPassword:
         userInputBackgroundImage = PhotoImage(file="images/userInputPasswordScreen.png")
         checkBeforeImage = PhotoImage(file="images/Checkbox.png")
         checkAfterImage = PhotoImage(file="images/checked.png")
+        backButtonImage = PhotoImage(file="images/back.png")
 
         background_label = Label(userInputWindow, image=userInputBackgroundImage)
         CopyGeneratedPassword = copyGeneratedPassword.subsample(3, 3)
         GeneratePasswordButton = generatePasswordButton.subsample(3, 3)
+        BackButton = backButtonImage.subsample(3, 3)
 
         background_label.place(x=0, y=0, relwidth=1, relheight=1)
         userInputWindow.resizable(0, 0)
         userInputWindow.geometry(f'{app_width}x{app_height}+{int(x_cord)}+{int(y_cord)}')
+
+        def backToDashboard():
+            backObject = dashboard.Dashboard()
+            userInputWindow.destroy()
+            backObject.main_window()
+
+        BackToDashboardButton = Button(userInputWindow, image=BackButton, compound=LEFT, bg='white',
+                                       borderwidth=0,command=backToDashboard)
+        BackToDashboardButton.place(x=14, y=10)
 
         Output = Text(userInputWindow, height=1, borderwidth=0,
                       width=40,
@@ -64,7 +74,7 @@ class UserInputPassword:
         CheckBox_3 = Checkbutton(userInputWindow, variable=varValueForCheckBox[2], onvalue=1, offvalue=0, height=0,
                                  width=0, bg="white",
                                  image=checkBeforeImage,
-                                 selectimage=checkAfterImage, indicatoron=False, borderwidth=0, ).place(x=585, y=480)
+                                 selectimage=checkAfterImage, indicatoron=False, borderwidth=0, ).place(x=585, y=470)
         CheckBox_4 = Checkbutton(userInputWindow, variable=varValueForCheckBox[3], onvalue=1, offvalue=0, height=0,
                                  width=0, bg="white",
                                  image=checkBeforeImage,
@@ -95,12 +105,6 @@ class UserInputPassword:
             # Generate button work
             self.password = ''
             self.password = PasswordValue.get()
-            # print("main line : ", self.password, "\n field: ",PasswordValue.get(), "\n Shffle : "
-            #       , self.userInputShuffleValue(self.password), "\n number",
-            #       self.userInputShuffleIntoNumber(self.password), "\n   reverse"
-            #       , self.userInputReverseValue(self.password))
-            print('State: ', state())
-            # print("pass:", self.GenerateDefaultPassword())
             # Display text field work
             Output.configure(state="normal")
             Output.delete('1.0', END)
@@ -120,18 +124,18 @@ class UserInputPassword:
                 tempPassword = self.UserInputPasswordPlacing(self.password, self.userInputShuffleValue(self.password),
                                                              "")
             if CheckList[1] == 1:
-                tempPassword = self.UserInputPasswordPlacing("", self.password,
-                                                             self.userInputShuffleValue(self.password))
+                tempPassword = self.UserInputPasswordPlacing(self.userInputReverseValue(self.password),
+                                                             self.specialCharacterShuffle(1), self.password)
             if CheckList[2] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
-                                                             self.userInputShuffleIntoNumber(self.password),
+                tempPassword = self.UserInputPasswordPlacing("", self.userInputShuffleValue(self.password),
                                                              self.password)
             if CheckList[3] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.userInputReverseValue(self.password),
+                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
                                                              self.specialCharacterShuffle(1), self.password)
             if CheckList[4] == 1:
                 tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
-                                                             self.specialCharacterShuffle(1), self.password)
+                                                             self.userInputShuffleIntoNumber(self.password),
+                                                             self.password)
             if CheckList[5] == 1:
                 tempPassword = self.GenerateDefaultPassword()
             if CheckList.count(0) == 6:
@@ -169,10 +173,6 @@ class UserInputPassword:
         default = self.specialCharacterShuffle(1) + self.userInputShuffleValue(
             self.password) + self.password + self.specialCharacterShuffle(1) + self.userInputShuffleIntoNumber(
             self.password) + self.specialCharacterShuffle(1)
-        print("_1:", self.userInputShuffleValue(self.password))
-        print("_2:", self.userInputShuffleIntoNumber(self.password))
-        print("_3:", self.userInputReverseValue(self.password))
-        print("_4:", default)
         return default
 
     # return password string
