@@ -4,6 +4,7 @@ from tkinter import *
 from copyPassword import CopyPassword
 import dashboard
 
+
 class UserInputPassword:
     password = ''
     checkValue = []
@@ -46,7 +47,7 @@ class UserInputPassword:
             backObject.main_window()
 
         BackToDashboardButton = Button(userInputWindow, image=BackButton, compound=LEFT, bg='white',
-                                       borderwidth=0,command=backToDashboard)
+                                       borderwidth=0, command=backToDashboard)
         BackToDashboardButton.place(x=14, y=10)
 
         Output = Text(userInputWindow, height=1, borderwidth=0,
@@ -121,23 +122,23 @@ class UserInputPassword:
         tempPassword = ''
         try:
             if CheckList[0] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.password, self.userInputShuffleValue(self.password),
-                                                             "")
+                tempPassword += self.UserInputPasswordPlacing(self.password, self.userInputShuffleValue(self.password),
+                                                              "")
             if CheckList[1] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.userInputReverseValue(self.password),
-                                                             self.specialCharacterShuffle(1), self.password)
+                tempPassword += self.UserInputPasswordPlacing(self.userInputReverseValue(self.password),
+                                                              self.specialCharacterShuffle(1), self.password)
             if CheckList[2] == 1:
-                tempPassword = self.UserInputPasswordPlacing("", self.userInputShuffleValue(self.password),
-                                                             self.password)
+                tempPassword += self.UserInputPasswordPlacing("", self.userInputShuffleValue(self.password),
+                                                              self.password)
             if CheckList[3] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
-                                                             self.specialCharacterShuffle(1), self.password)
+                tempPassword += self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
+                                                              self.specialCharacterShuffle(1), self.password)
             if CheckList[4] == 1:
-                tempPassword = self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
-                                                             self.userInputShuffleIntoNumber(self.password),
-                                                             self.password)
+                tempPassword += self.UserInputPasswordPlacing(self.userInputShuffleValue(self.password),
+                                                              self.userInputShuffleIntoNumber(self.password),
+                                                              self.password)
             if CheckList[5] == 1:
-                tempPassword = self.GenerateDefaultPassword()
+                tempPassword += self.GenerateDefaultPassword()
             if CheckList.count(0) == 6:
                 print("Error!")
 
