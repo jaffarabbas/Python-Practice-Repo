@@ -7,7 +7,7 @@ import dashboard
 
 class UserInputPassword:
     password = ''
-    checkValue = []
+    checkValueOfCheckBoxes = []
     PasswordLength = 0
     SpecialCharacters = "@$-&.%!_#"
 
@@ -90,10 +90,10 @@ class UserInputPassword:
                                  selectimage=checkAfterImage, indicatoron=False, borderwidth=0, ).place(x=837, y=515)
 
         def state():
-            self.checkValue.clear()
+            self.checkValueOfCheckBoxes.clear()
             for i in varValueForCheckBox:
-                self.checkValue.append(int(i.get()))
-            return self.checkValue
+                self.checkValueOfCheckBoxes.append(int(i.get()))
+            return self.checkValueOfCheckBoxes
 
         def Copy():
             CopyPassword.CopyPassword(Output.get("1.0", END))
