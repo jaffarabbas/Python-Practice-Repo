@@ -6,7 +6,7 @@ import dashboard
 
 class RandomPassword:
     password = ''
-    checkValue = []
+    checkValueOfCheckBoxes = []
     PasswordLength = 0
 
     def main_window(self):
@@ -80,10 +80,10 @@ class RandomPassword:
         Length.place(x="822", y="394")
 
         def state():
-            self.checkValue.clear()
+            self.checkValueOfCheckBoxes.clear()
             for i in varValueForCheckBox:
-                self.checkValue.append(int(i.get()))
-            return self.checkValue
+                self.checkValueOfCheckBoxes.append(int(i.get()))
+            return self.checkValueOfCheckBoxes
 
         def Copy():
             CopyPassword.CopyPassword(Output.get("1.0", END))
