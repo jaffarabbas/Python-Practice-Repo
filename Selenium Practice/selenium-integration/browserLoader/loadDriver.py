@@ -2,10 +2,11 @@ from selenium import webdriver
 
 
 class LoadDriver:
-    _browserDriver = "C:\Program Files (x86)\chromedriver.exe"
+    _browserDriver = "J:\Github\Python-Practice-Repo\Selenium Practice\selenium-integration\drivers\chromedriver.exe"
     _driver = None
 
-    def __init__(self):
+    def loadDriver(self):
+        print("Loading driver")
         self._driver = webdriver.Chrome(self._browserDriver)
         self._driver.maximize_window()
 
@@ -14,8 +15,6 @@ class LoadDriver:
 
     def open(self, url):
         self._driver.get(url)
-        return self._driver
 
-    def quit(self):
-        self._driver.quit()
-        return self._driver
+    def close(self):
+        self._driver.close()
