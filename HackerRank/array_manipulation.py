@@ -15,6 +15,19 @@ import sys
 #  2. 2D_INTEGER_ARRAY queries
 #
 
+from itertools import accumulate
+
+def arrayManipulation(n, queries):
+    # Write your code here
+    arr = [0 for _ in range(n)]
+    
+    for a, b, k in queries:
+        arr[a-1] += k
+        if b != n:
+            arr[b] -= k
+
+    return max(accumulate(arr))
+
 def a(n,queries):
     arr = [0 for _ in range(n)]
     
